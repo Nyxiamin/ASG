@@ -9,7 +9,7 @@
 struct s_node
 {
     int value;
-    struct s_node   *left, *right;
+    struct s_node   *left, *middleL, *middleR, *right;
     int depth;
 };
 
@@ -18,7 +18,7 @@ typedef struct s_node t_node, *p_node;
 
 typedef struct s_tree
 {
-    p_node root;
+    p_node A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z;
 } t_tree, *p_tree;
 
 struct s_cell
