@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/borde/Desktop/Cours/2ème année/Projet ASG
+# Install script for directory: C:/Users/borde/Desktop/Cours/2ème année/ASG
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/borde/Desktop/Cours/2ème année/Projet ASG/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/borde/Desktop/Cours/2ème année/ASG/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

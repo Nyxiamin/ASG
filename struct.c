@@ -10,15 +10,5 @@ t_tree createEmptyTree(){
 
 p_tree Create_tree_verbs(FILE * file){
     t_tree tree_Verbs = createEmptyTree();
-    if (file != NULL)
-    {
-        fclose(file);
-        // On peut lire et écrire dans le fichier
-        printf("Ouvert!");
-    }
-    else
-    {
-        // On affiche un message d'erreur si on veut
-        printf("Impossible d'ouvrir le fichier test.txt");
-    }
+
 }
