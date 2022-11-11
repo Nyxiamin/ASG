@@ -1,5 +1,6 @@
-#include "Struct.h"
+#include "struct.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 t_tree createEmptyTree(){
     t_tree new_tree;
@@ -7,14 +8,17 @@ t_tree createEmptyTree(){
     return new_tree;
 }
 
-t_std_list Create_Struct(){
-    t_std_list list;
-    t_tree tree_Verbe = createEmptyTree();
-    t_tree tree_Nom = createEmptyTree();
-    t_tree tree_Adjectif = createEmptyTree();
-    t_tree tree_Adverbes = createEmptyTree();
-
-
-
-    return list;
+p_tree Create_tree_verbs(FILE * file){
+    t_tree tree_Verbs = createEmptyTree();
+    if (file != NULL)
+    {
+        fclose(file);
+        // On peut lire et écrire dans le fichier
+        printf("Ouvert!");
+    }
+    else
+    {
+        // On affiche un message d'erreur si on veut
+        printf("Impossible d'ouvrir le fichier test.txt");
+    }
 }

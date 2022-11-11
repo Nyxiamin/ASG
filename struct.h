@@ -23,7 +23,7 @@ typedef struct s_tree
 
 struct s_cell
 {
-    int value;
+    p_tree value;
     struct s_cell *next;
 };
 typedef struct s_cell t_cell, *p_cell;
@@ -37,7 +37,7 @@ typedef struct s_std_list
 
 
 t_tree createEmptyTree();
-t_std_list Create_Struct();
+p_tree Create_tree_verbs(FILE *);
 
 
 #endif //PROJET_L2C_STRUCT_H
