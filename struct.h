@@ -9,9 +9,11 @@
 
 
 int* Sort_types_Verbs(FILE *);
-int* Sort_types_Names(FILE *);
+int* Sort_types_Nouns(FILE *);
 int* Sort_types_Adjectives(FILE *);
 int Sort_types_Adverbs(FILE *);
-char* Extract_word(FILE *, FILE *, FILE *, FILE *);
+
+void find_a_word(const int*, const int*, const int*, int);
+//char* Extract_word(FILE *, FILE *, FILE *, FILE *);
 
 #endif //PROJET_L2C_STRUCT_H
