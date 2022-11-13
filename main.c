@@ -6,13 +6,15 @@
 int menu(){
     printf("\nWelcome in our Automatic Sentence Generator :\n\n"
            "Choose what you want to do :\n"
-           "1) Modele n1 : nom - adjectif - verbe - nom\n"
-           "2) Modele n2 : nom - 'qui' - verbe - verbe - nom - adjectif \n"
-           "3) Trouver une forme de base au hasard\n\n"
+           "1) Modele n1 : noun - adjective - verb - noun\n"
+           "2) Modele n2 : noun - 'qui' - verb - verb - noun - adjective \n"
+           "3) Modele n2 : noun - verb - noun - adjective - 'et se' - verb \n"
+           "4) Trouver une forme de base au hasard\n"
+           "5) Exit\n\n"
            "Your Answer :");
     int value = -1;
     scanf("%d",&value);
-    while (value <1 || value >3){
+    while (value <1 || value >5){
         printf("You have entered a bad number please retry:");
         scanf("%d",&value);
     }
@@ -44,18 +46,28 @@ int main(void)
     int value = menu();
     switch (value){
         case 1:
-            printf("Thanks to have chose the first model\n");
-            //Mettre la Fonction1 ICI
-            //nom - adjectif - verbe - nom
+            printf("You choose the first model\n");
+            //Modele n1 : noun - adjective - verb - noun
+            create_phrase1(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
             break;
         case 2:
-            printf("Thanks to have chose the second model\n");
-            //METTRE LA FONCTION2 ICI
-            //nom - 'qui' - verbe - verbe - nom - adjectif
+            printf("You choose the second model\n");
+            //Modele n2 : noun - 'qui' - verb - verb - noun - adjective
+            create_phrase2(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
             break;
         case 3:
+            printf("You choose the third model\n");
+            //Modele n2 : noun - verb - noun - adjective - 'et' - verb
+            create_phrase3(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
+            break;
+        case 4:
             find_a_word(number_of_each_type_Verbs, number_of_each_type_Nouns, number_of_each_type_Adjectives, number_of_each_type_Adverbs);
             break;
+        case 5:
+            return 0;
     }
-    return 0;
+    Sleep(1);
+    printf("\nReturn to the menu...\n");
+    Sleep(1);
+    main();
 }

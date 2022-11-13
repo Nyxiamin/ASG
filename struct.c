@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <math.h>
+#include <windows.h>
 
 
 int * Sort_types_Verbs(FILE* Verbs){
@@ -292,67 +292,6 @@ int Sort_types_Adverbs(FILE* Adverbs) {
     return numbersoftypes_Adverbs;
 }
 
-
-/*
-char* Extract_word(FILE * file){
-    char ligne[200];
-    char c[1]="a";
-    while(fgets(ligne, 100, file) != NULL)
-    {
-        char *declination= malloc(30), *original = malloc(30), *type=malloc(100);
-        sscanf(ligne,"%s %s %s", declination, original, type);
-        while (original[0] != c[0]){
-            c[0] += 1;
-        }
-        printf("\n%s", ligne);
-        char type1[15], type2[15], type3[15], type4[15], type5[15];
-        memcpy(type1, &type[4], 11 );
-        type1[11] = '\0';
-        memcpy(type2, &type[15], 11 );
-        type2[11] = '\0';
-        memcpy(type3, &type[26], 11 );
-        type3[11] = '\0';
-        memcpy(type4, &type[37], 11 );
-        type4[11] = '\0';
-        memcpy(type5, &type[48], 11 );
-        type5[11] = '\0';
-        printf("Declination:   %s\n", declination);
-        printf("Original:   %s\n", original);
-        printf("Type:   %s\n", type);
-        printf("%s %s %s %s %s\n", type1, type2, type3, type4, type5);
-        if (c[0] == 'a'){
-            if (strstr(type1, "IImp")){
-                //pointeur left
-                if (strstr(type1,"SG")){
-                    //pointeur left - left
-                }
-                if (strstr(type1,"PL")){
-                    //pointeur left - right
-                }
-            }
-            if (strstr(type1, "IPres")){
-                //pointeur middle
-                if (strstr(type1,"SG")){
-                    //pointeur middle - left
-                }
-                if (strstr(type1,"PL")){
-                    //pointeur middle - right
-                }
-            }
-            if (strstr(type1, "SPre")){
-                //pointeur right
-                if (strstr(type1,"SG")){
-                    //pointeur right - left
-                }
-                if (strstr(type1,"PL")){
-                    //pointeur right - right
-                }
-            }
-        }
-    }
-}
-*/
-
 void find_a_word(const int* numberVerb, const int* numberNoun, const int* numberAdjective, int numberAdverb){
     printf("We will find a word...\n Which type of word do you want?\n 1: Verbs   2:Nouns   3:Adjectives   4:Adverbes\n");
     int type=0;
@@ -439,4 +378,145 @@ void find_a_word(const int* numberVerb, const int* numberNoun, const int* number
             }
             break;
     }
+}
+
+
+int pick_noun(const int* number_nouns){
+    //1: Mas+SG   2: Mas+PL  3: Fem+SG 4: Fem+PL 5: InvGen+SG 6: InvGen+PL
+    int nN=0;
+    for (int i = 0; i < 6; i++) {
+        nN += number_nouns[i];
+    }
+    char ligneN[200];
+    int randomN = rand()%nN+1-0;
+    int xN=0;
+    FILE* fileN=NULL;
+    fileN=fopen("dictionnaire_nouns.txt","r+");
+    while (fgets(ligneN, 100, fileN) != NULL) {
+        if (xN==randomN){
+            char *declination = malloc(30), *original = malloc(30), *type = malloc(100);
+            sscanf(ligneN, "%s %s %s", declination, original, type);
+            if (strstr(type,"Mas")){
+                if (strstr(type,"SG")){
+                    printf(" le %s", declination);
+                    return 1;
+                }
+                if (strstr(type,"PL")){
+                    printf(" les %s", declination);
+                    return 2;
+                }
+            }
+            if (strstr(type,"Fem")){
+                if (strstr(type,"SG")){
+                    printf(" la %s", declination);
+                    return 3;
+                }
+                if (strstr(type,"PL")){
+                    printf(" les %s", declination);
+                    return 4;
+                }
+            }
+            if (strstr(type,"InvGen")){
+                if (strstr(type,"SG")){
+                    printf(" le %s", declination);
+                    return 5;
+                }
+                if (strstr(type,"PL")){
+                    printf(" les %s", declination);
+                    return 6;
+                }
+            }
+        }
+        xN+=1;
+    }
+}
+
+void pick_adjective(const int* number_adj, int decli){
+    char ligne[200];
+    int min=0;
+    for (int i=0;i<decli-1;i++){
+        min += number_adj[i];
+    }
+    int max=min+number_adj[decli-1];
+    int random = (int)(rand() * (max+1 - min) / RAND_MAX +min );
+    int x=0;
+    FILE* file=NULL;
+    file=fopen("dictionnaire_adjectives.txt","r+");
+    while (fgets(ligne, 100, file) != NULL) {
+        if (x==random){
+            char *declination = malloc(30), *original = malloc(30), *type = malloc(100);
+            sscanf(ligne, "%s %s %s", declination, original, type);
+            printf(" %s", declination);
+        }
+        x+=1;
+    }
+}
+
+void pick_verb(const int* number_verb, int decli){
+    char ligne[200];
+    int randomtemps = (int)(rand() * (2+1) / RAND_MAX );
+    int min=0;
+    int conj=0;
+    if (decli == 1 || decli==3 || decli==5){
+        conj=2+randomtemps*6;
+    }
+    else{
+        conj=5+randomtemps*6;
+    }
+    for (int i=0;i<conj;i++){
+        min += number_verb[i];
+    }
+    int max=min+number_verb[conj];
+    int random = (int)(rand() * (max+1 - min) / RAND_MAX +min );
+    int x=0;
+    FILE* file=NULL;
+    file=fopen("dictionnaire_verbs.txt","r+");
+    while (fgets(ligne, 100, file) != NULL) {
+        if (x==random){
+            char *declination = malloc(30), *original = malloc(30), *type = malloc(100);
+            sscanf(ligne, "%s %s %s", declination, original, type);
+            printf(" %s", declination);
+        }
+        x+=1;
+    }
+}
+
+void create_phrase1(const int* numberVerb, const int* numberNoun, const int* numberAdjective, int numberAdverb){
+    //Modele n1 : noun - adjective - verb - noun
+    srand(time(NULL));
+    printf("=>  ");
+    int word_declination = pick_noun(numberNoun);
+    pick_adjective(numberAdjective,word_declination);
+    pick_verb(numberVerb,word_declination);
+    Sleep(1);
+    int not_used = pick_noun(numberNoun);
+    printf(".");
+}
+
+void create_phrase2(const int* numberVerb, const int* numberNoun, const int* numberAdjective, int numberAdverb){
+    //Modele n2 : noun - 'qui' - verb - verb - noun - adjective
+    srand(time(NULL));
+    printf("=>  ");
+    int word_declination = pick_noun(numberNoun);
+    printf(" qui");
+    pick_verb(numberVerb,word_declination);
+    Sleep(1);
+    pick_verb(numberVerb,word_declination);
+    int word_declination2 = pick_noun(numberNoun);
+    pick_adjective(numberAdjective,word_declination2);
+    printf(".");
+}
+
+void create_phrase3(const int* numberVerb, const int* numberNoun, const int* numberAdjective, int numberAdverb){
+    //Modele n2 : noun - verb - noun - adjective - 'et se' - verb
+    srand(time(NULL));
+    printf("=>  ");
+    int word_declination = pick_noun(numberNoun);
+    pick_verb(numberVerb,word_declination);
+    Sleep(1);
+    int word_declination2 = pick_noun(numberNoun);
+    pick_adjective(numberAdjective,word_declination2);
+    printf(" et se");
+    pick_verb(numberVerb,word_declination);
+    printf(".");
 }
