@@ -3,6 +3,38 @@
 #include "struct.h"
 #include "struct.c"
 
+int menu(){
+    printf("\nWelcome in our Automatic Sentence Generator :\n\n"
+           "Choose what you want to do :\n"
+           "1) Modele n1 : nom - adjectif - verbe - nom\n"
+           "2) Modele n2 : nom - 'qui' - verbe - verbe - nom - adjectif \n"
+           "3) Trouver une forme de base au hasard\n\n"
+           "Your Answer :");
+    int value = -1;
+    scanf("%d",&value);
+    switch (value){
+        case 1:
+            printf("Thanks to have chose the first model\n");
+            //Mettre la Fonction1 ICI
+            //nom - adjectif - verbe - nom
+            break;
+        case 2:
+            printf("Thanks to have chose the second model\n");
+            //METTRE LA FONCTION2 ICI
+            //nom - 'qui' - verbe - verbe - nom - adjectif
+            break;
+        case 3:
+            printf("We will find a word...\n");
+            //METTRE LA FONCTION3 ICI
+            //trouver mot de forme de base au hasard
+            break;
+        default:
+            printf("You have entered a bad number please retry.\n");
+            menu();
+            break;
+    }
+}
+
 int main(void)
 {
     //opening files
@@ -17,19 +49,14 @@ int main(void)
 
     //sorting each files
     int * number_of_each_type_Verbs = Sort_types_Verbs(Verbs);
-    printf("Number of verbs: %d %d\n", number_of_each_type_Verbs[0], number_of_each_type_Verbs[3]);
     int * number_of_each_type_Names = Sort_types_Names(Names);
-    printf("Number of names: %d %d\n", number_of_each_type_Names[0], number_of_each_type_Names[3]);
     int * number_of_each_type_Adjectives = Sort_types_Adjectives(Adjectives);
-    printf("Number of adjectives: %d %d\n", number_of_each_type_Adjectives[0], number_of_each_type_Adjectives[3]);
     int number_of_each_type_Adverbs = Sort_types_Adverbs(Adverbs);
-    printf("Number of adverbs: %d \n", number_of_each_type_Adverbs);
-
     //close files
     fclose(Verbs);
     fclose(Names);
     fclose(Adjectives);
     fclose(Adverbs);
+    menu();
     return 0;
 }
-

@@ -3,15 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-t_tree createEmptyTree(){
-    t_tree new_tree;
-    new_tree.root = NULL;
-    return new_tree;
-}
 
 int * Sort_types_Verbs(FILE* Verbs){
     char ligne[200];
-    static int numbersoftypes_Verbs[18]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    static int numbersoftypes_Verbs[19]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     //-- IIMP
     FILE *file = NULL;
     file = fopen("dictionnaire_non_accentue.txt", "r+");
@@ -159,12 +154,20 @@ int * Sort_types_Verbs(FILE* Verbs){
             numbersoftypes_Verbs[17] +=1;
         }
     }
+    file = fopen("dictionnaire_non_accentue.txt", "r+");
+    fputs("Inf\n",Verbs);
+    while(fgets(ligne, 100, file) != NULL){
+        if (strstr(ligne,"Ver") && strstr(ligne,"Inf")){
+            fputs(ligne,Verbs);
+            numbersoftypes_Verbs[18] +=1;
+        }
+    }
     return numbersoftypes_Verbs;
 }
 
 int * Sort_types_Names(FILE* Names){
     char ligne[200];
-    static int numbersoftypes_Names[4]={0,0,0,0};
+    static int numbersoftypes_Names[6]={0,0,0,0,0,0};
     FILE *file = NULL;
     file = fopen("dictionnaire_non_accentue.txt", "r+");
     fputs("Mas - SG\n",Names);
@@ -198,12 +201,28 @@ int * Sort_types_Names(FILE* Names){
             numbersoftypes_Names[3] +=1;
         }
     }
+    file = fopen("dictionnaire_non_accentue.txt", "r+");
+    fputs("InvGen - SG\n",Names);
+    while(fgets(ligne, 100, file) != NULL){
+        if (strstr(ligne,"Nom") && strstr(ligne,"InvGen") && strstr(ligne,"SG")){
+            fputs(ligne,Names);
+            numbersoftypes_Names[4] +=1;
+        }
+    }
+    file = fopen("dictionnaire_non_accentue.txt", "r+");
+    fputs("InvGen - PL\n",Names);
+    while(fgets(ligne, 100, file) != NULL){
+        if (strstr(ligne,"Nom") && strstr(ligne,"InvGen") && strstr(ligne,"PL")){
+            fputs(ligne,Names);
+            numbersoftypes_Names[5] +=1;
+        }
+    }
     return numbersoftypes_Names;
 }
 
 int * Sort_types_Adjectives(FILE* Adjectives){
     char ligne[200];
-    static int numbersoftypes_Adjectives[4]={0,0,0,0};
+    static int numbersoftypes_Adjectives[6]={0,0,0,0,0,0};
     FILE *file = NULL;
     file = fopen("dictionnaire_non_accentue.txt", "r+");
     fputs("Mas - SG\n",Adjectives);
@@ -235,6 +254,22 @@ int * Sort_types_Adjectives(FILE* Adjectives){
         if (strstr(ligne,"Adj") && strstr(ligne,"Fem") && strstr(ligne,"PL")){
             fputs(ligne,Adjectives);
             numbersoftypes_Adjectives[3] +=1;
+        }
+    }
+    file = fopen("dictionnaire_non_accentue.txt", "r+");
+    fputs("InvGen - SG\n",Adjectives);
+    while(fgets(ligne, 100, file) != NULL){
+        if (strstr(ligne,"Adj") && strstr(ligne,"InvGen") && strstr(ligne,"SG")){
+            fputs(ligne,Adjectives);
+            numbersoftypes_Adjectives[4] +=1;
+        }
+    }
+    file = fopen("dictionnaire_non_accentue.txt", "r+");
+    fputs("InvGen - PL\n",Adjectives);
+    while(fgets(ligne, 100, file) != NULL){
+        if (strstr(ligne,"Adj") && strstr(ligne,"InvGen") && strstr(ligne,"PL")){
+            fputs(ligne,Adjectives);
+            numbersoftypes_Adjectives[5] +=1;
         }
     }
     return numbersoftypes_Adjectives;
