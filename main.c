@@ -13,36 +13,16 @@ int menu(){
            "5) Exit\n\n"
            "Your Answer :");
     int value = -1;
-    scanf("%d",&value);
+    scanf(" %d",&value);
     while (value <1 || value >5){
         printf("You have entered a bad number please retry:");
-        scanf("%d",&value);
+        scanf(" %d",&value);
     }
     return value;
 }
 
-int main(void)
+int branches(int *number_of_each_type_Verbs,int*number_of_each_type_Nouns,int*number_of_each_type_Adjectives,int number_of_each_type_Adverbs)
 {
-    //opening files
-    FILE *Verbs=NULL;
-    Verbs = fopen("dictionnaire_verbs.txt", "w+");
-    FILE *Nouns=NULL;
-    Nouns = fopen("dictionnaire_nouns.txt", "w+");
-    FILE *Adjectives=NULL;
-    Adjectives = fopen("dictionnaire_adjectives.txt", "w+");
-    FILE *Adverbs=NULL;
-    Adverbs = fopen("dictionnaire_adverbs.txt", "w+");
-
-    //sorting each files
-    int * number_of_each_type_Verbs = Sort_types_Verbs(Verbs);
-    int * number_of_each_type_Nouns = Sort_types_Nouns(Nouns);
-    int * number_of_each_type_Adjectives = Sort_types_Adjectives(Adjectives);
-    int number_of_each_type_Adverbs = Sort_types_Adverbs(Adverbs);
-    //close files
-    fclose(Verbs);
-    fclose(Nouns);
-    fclose(Adjectives);
-    fclose(Adverbs);
     int value = menu();
     switch (value){
         case 1:
@@ -66,8 +46,35 @@ int main(void)
         case 5:
             return 0;
     }
-    Sleep(1);
+    Sleep(1000);
     printf("\nReturn to the menu...\n");
-    Sleep(1);
-    main();
+    Sleep(1000);
+    branches(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
 }
+
+
+int main(void){
+    //opening files
+    FILE *Verbs=NULL;
+    Verbs = fopen("dictionnaire_verbs.txt", "w+");
+    FILE *Nouns=NULL;
+    Nouns = fopen("dictionnaire_nouns.txt", "w+");
+    FILE *Adjectives=NULL;
+    Adjectives = fopen("dictionnaire_adjectives.txt", "w+");
+    FILE *Adverbs=NULL;
+    Adverbs = fopen("dictionnaire_adverbs.txt", "w+");
+
+    //sorting each files
+    int * number_of_each_type_Verbs = Sort_types_Verbs(Verbs);
+    int * number_of_each_type_Nouns = Sort_types_Nouns(Nouns);
+    int * number_of_each_type_Adjectives = Sort_types_Adjectives(Adjectives);
+    int number_of_each_type_Adverbs = Sort_types_Adverbs(Adverbs);
+    //close files
+    fclose(Verbs);
+    fclose(Nouns);
+    fclose(Adjectives);
+    fclose(Adverbs);
+
+    branches(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
+}
+

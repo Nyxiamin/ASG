@@ -84,6 +84,7 @@ int * Sort_types_Verbs(FILE* Verbs){
             numbersoftypes_Verbs[8] +=1;
         }
     }
+    file = fopen("dictionnaire_non_accentue.txt", "r+");
     fputs("IPre - PL - P1\n",Verbs);
     while(fgets(ligne, 100, file) != NULL){
         if (strstr(ligne,"Ver") && strstr(ligne,"IPre") && strstr(ligne,"PL") && strstr(ligne,"P1")){
@@ -319,7 +320,7 @@ void find_a_word(const int* numberVerb, const int* numberNoun, const int* number
             }
             break;
         case 2:
-            printf("You choose a Noun");
+            printf("You choose a Noun\n");
             int nN=0;
             for (int i = 0; i < 6; i++) {
                 nN += numberNoun[i];
@@ -377,6 +378,9 @@ void find_a_word(const int* numberVerb, const int* numberNoun, const int* number
                 xAd+=1;
             }
             break;
+        default:
+            printf("This is not a valid value.\n");
+            break;
     }
 }
 
@@ -398,7 +402,12 @@ int pick_noun(const int* number_nouns){
             sscanf(ligneN, "%s %s %s", declination, original, type);
             if (strstr(type,"Mas")){
                 if (strstr(type,"SG")){
-                    printf(" le %s", declination);
+                    if (declination[0]=='a' ||declination[0]=='o'||declination[0]=='i'||declination[0]=='e'||declination[0]=='u'||declination[0]=='y'){
+                        printf(" l'%s", declination);
+                    }
+                    else{
+                        printf(" le %s", declination);
+                    }
                     return 1;
                 }
                 if (strstr(type,"PL")){
@@ -408,7 +417,12 @@ int pick_noun(const int* number_nouns){
             }
             if (strstr(type,"Fem")){
                 if (strstr(type,"SG")){
-                    printf(" la %s", declination);
+                    if (declination[0]=='a' ||declination[0]=='o'||declination[0]=='i'||declination[0]=='e'||declination[0]=='u'||declination[0]=='y'){
+                        printf(" l'%s", declination);
+                    }
+                    else{
+                        printf(" la %s", declination);
+                    }
                     return 3;
                 }
                 if (strstr(type,"PL")){
@@ -418,7 +432,12 @@ int pick_noun(const int* number_nouns){
             }
             if (strstr(type,"InvGen")){
                 if (strstr(type,"SG")){
-                    printf(" le %s", declination);
+                    if (declination[0]=='a' ||declination[0]=='o'||declination[0]=='i'||declination[0]=='e'||declination[0]=='u'||declination[0]=='y'){
+                        printf(" l'%s", declination);
+                    }
+                    else{
+                        printf(" le %s", declination);
+                    }
                     return 5;
                 }
                 if (strstr(type,"PL")){
@@ -455,7 +474,6 @@ void pick_adjective(const int* number_adj, int decli){
 void pick_verb(const int* number_verb, int decli){
     char ligne[200];
     int randomtemps = (int)(rand() * (2+1) / RAND_MAX );
-    int min=0;
     int conj=0;
     if (decli == 1 || decli==3 || decli==5){
         conj=2+randomtemps*6;
@@ -463,6 +481,8 @@ void pick_verb(const int* number_verb, int decli){
     else{
         conj=5+randomtemps*6;
     }
+
+    int min=0;
     for (int i=0;i<conj;i++){
         min += number_verb[i];
     }
