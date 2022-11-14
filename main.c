@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdlib.h>
 #include "struct.h"
 #include "struct.c"
 
@@ -8,7 +7,7 @@ int menu(){
            "Choose what you want to do :\n"
            "1) Modele n1 : noun - adjective - verb - noun\n"
            "2) Modele n2 : noun - 'qui' - verb - verb - noun - adjective \n"
-           "3) Modele n2 : noun - verb - noun - adjective - 'et se' - verb \n"
+           "3) Modele n2 : noun - verb - noun - adjective - 'et se' - verb - adverb \n"
            "4) Trouver une forme de base au hasard\n"
            "5) Exit\n\n"
            "Your Answer :");
@@ -37,7 +36,7 @@ int branches(int *number_of_each_type_Verbs,int*number_of_each_type_Nouns,int*nu
             break;
         case 3:
             printf("You choose the third model\n");
-            //Modele n2 : noun - verb - noun - adjective - 'et' - verb
+            //Modele n2 : noun - verb - noun - adjective - 'et' - verb - adverb
             create_phrase3(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
             break;
         case 4:

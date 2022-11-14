@@ -501,6 +501,24 @@ void pick_verb(const int* number_verb, int decli){
     }
 }
 
+void pick_adverb(int number_adverb){
+    char ligne[200];
+    int min=0;
+    int max=number_adverb;
+    int random = (int)(rand() * (max+1 - min) / RAND_MAX +min );
+    int x=0;
+    FILE* file=NULL;
+    file=fopen("dictionnaire_adverbs.txt","r+");
+    while (fgets(ligne, 100, file) != NULL) {
+        if (x==random){
+            char *declination = malloc(30), *original = malloc(30), *type = malloc(100);
+            sscanf(ligne, "%s %s %s", declination, original, type);
+            printf(" %s", declination);
+        }
+        x+=1;
+    }
+}
+
 void create_phrase1(const int* numberVerb, const int* numberNoun, const int* numberAdjective, int numberAdverb){
     //Modele n1 : noun - adjective - verb - noun
     srand(time(NULL));
@@ -528,7 +546,7 @@ void create_phrase2(const int* numberVerb, const int* numberNoun, const int* num
 }
 
 void create_phrase3(const int* numberVerb, const int* numberNoun, const int* numberAdjective, int numberAdverb){
-    //Modele n2 : noun - verb - noun - adjective - 'et se' - verb
+    //Modele n2 : noun - verb - noun - adjective - 'et se' - verb - adverb
     srand(time(NULL));
     printf("=>  ");
     int word_declination = pick_noun(numberNoun);
@@ -538,5 +556,6 @@ void create_phrase3(const int* numberVerb, const int* numberNoun, const int* num
     pick_adjective(numberAdjective,word_declination2);
     printf(" et se");
     pick_verb(numberVerb,word_declination);
+    pick_adverb(numberAdverb);
     printf(".");
 }
