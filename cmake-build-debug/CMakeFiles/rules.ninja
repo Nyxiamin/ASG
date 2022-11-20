@@ -42,7 +42,7 @@ rule C_EXECUTABLE_LINKER__Projet_ASG_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"C:\Users\borde\Desktop\Cours\2ème année\ASG" -B"C:\Users\borde\Desktop\Cours\2ème année\ASG\cmake-build-debug"
+  command = "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"C:\Users\borde\Desktop\Cours\2ème année\Project ASG\ASG" -B"C:\Users\borde\Desktop\Cours\2ème année\Project ASG\ASG\cmake-build-debug"
   description = Re-running CMake...
   generator = 1
 

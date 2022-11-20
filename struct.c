@@ -5,6 +5,31 @@
 #include <time.h>
 #include <windows.h>
 
+t_tree createEmptyTree(){
+    t_tree new_tree;
+    new_tree.root = NULL;
+    return new_tree;
+}
+
+p_tree Create_tree_verbs(FILE * file){
+    t_tree tree_Verbs = createEmptyTree();
+
+    char ligne[50];
+    while(fgets(ligne, 50, file) != NULL) {
+        printf("\n%s", ligne);
+        char declination[15], original[15], type[30];
+        sscanf(ligne, "%s %s %s", declination, original, type);
+        if (strstr(type, "Ver:")) {
+            printf("Declination:   %s\n", declination);
+            printf("Original:   %s\n", original);
+            printf("Type:   %s\n", type);
+        }
+    }
+}
+
+
+
+
 
 int * Sort_types_Verbs(FILE* Verbs){
 
@@ -609,7 +634,7 @@ void explain_a_word(){
 }
 
 int pick_noun(const int* number_nouns){
-    //This function prints a noun with the correct determinant and return it's type
+    //This function prints a random chosen noun with the correct determinant and returns its type
     //Returns signification 1: Mas+SG   2: Mas+PL  3: Fem+SG 4: Fem+PL 5: InvGen+SG 6: InvGen+PL
     int nN=0;
     for (int i = 0; i < 6; i++) {
@@ -805,7 +830,7 @@ void create_phrase2(const int* numberVerb, const int* numberNoun, const int* num
 }
 
 void create_phrase3(const int* numberVerb, const int* numberNoun, const int* numberAdjective, int numberAdverb){
-    //Modele n2 : noun - verb - noun - adjective - 'et se' - verb - adverb
+    //Modele n3 : noun - verb - noun - adjective - 'et se' - verb - adverb
     srand(time(NULL)); //initializing the function rand with the time
     printf("=>  ");
 
