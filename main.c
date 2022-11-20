@@ -7,13 +7,16 @@ int menu(){
            "Choose what you want to do :\n"
            "1) Modele n1 : noun - adjective - verb - noun\n"
            "2) Modele n2 : noun - 'qui' - verb - verb - noun - adjective \n"
-           "3) Modele n2 : noun - verb - noun - adjective - 'et se' - verb - adverb \n"
-           "4) Trouver une forme de base au hasard\n"
-           "5) Exit\n\n"
+           "3) Modele n3 : noun - verb - noun - adjective - 'et se' - verb - adverb \n"
+           "4) Modele n4 : 'Je' - verb - noun - adjective\n"
+           "5) Modele n5 : 'Vous vous' - verb - adverb - 'avec' - noun\n"
+           "6) Find a base form\n"
+           "7) Searching for informations of a non-based form\n"
+           "8) Exit\n\n"
            "Your Answer :");
     int value = -1;
     scanf(" %d",&value);
-    while (value <1 || value >5){
+    while (value <1 || value >8){
         printf("You have entered a bad number please retry:");
         scanf(" %d",&value);
     }
@@ -22,7 +25,7 @@ int menu(){
 
 int branches(int *number_of_each_type_Verbs,int*number_of_each_type_Nouns,int*number_of_each_type_Adjectives,int number_of_each_type_Adverbs)
 {
-    int value = menu();
+    int value = menu(); //getting a valid value to decide what to do
     switch (value){
         case 1:
             printf("You choose the first model\n");
@@ -40,14 +43,28 @@ int branches(int *number_of_each_type_Verbs,int*number_of_each_type_Nouns,int*nu
             create_phrase3(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
             break;
         case 4:
-            find_a_word(number_of_each_type_Verbs, number_of_each_type_Nouns, number_of_each_type_Adjectives, number_of_each_type_Adverbs);
+            printf("You choose the fourth model\n");
+            //Modele n4 : 'Je' - verb - noun - adjective
+            create_phrase4(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
             break;
         case 5:
+            printf("You choose the fifth model\n");
+            //Modele n5 : 'Vous vous' - verb - adverb - 'avec' - noun
+            create_phrase5(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
+            break;
+        case 6:
+            find_a_word(number_of_each_type_Verbs, number_of_each_type_Nouns, number_of_each_type_Adjectives, number_of_each_type_Adverbs);
+            break;
+        case 7:
+            explain_a_word();
+            break;
+        case 8:
             return 0;
     }
-    Sleep(1000);
+    //calling back the menu
+    Sleep(5000);
     printf("\nReturn to the menu...\n");
-    Sleep(1000);
+    Sleep(2000);
     branches(number_of_each_type_Verbs,number_of_each_type_Nouns,number_of_each_type_Adjectives,number_of_each_type_Adverbs);
 }
 

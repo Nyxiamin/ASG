@@ -1,4 +1,3 @@
-Mas - SG
 abaca	abaca	Nom:Mas+SG
 abacule	abacule	Nom:Mas+SG
 abaissement	abaissement	Nom:Mas+SG
@@ -18168,7 +18167,6 @@ zygopetale	zygopetale	Nom:Mas+SG
 zygote	zygote	Nom:Mas+SG
 zython	zython	Nom:Mas+SG
 zythum	zythum	Nom:Mas+SG
-Mas - PL
 a	a Nom:Mas+InvPL
 abaissements	abaissement	Nom:Mas+PL
 abaisse-langue	abaisse-langue	Nom:Mas+InvPL
@@ -30921,7 +30919,6 @@ zouaves	zouave	Nom:Mas+PL
 zygomatiques	zygomatique	Nom:Mas+PL
 zygomycetes	zygomycete	Nom:Mas+PL
 z	z	Nom:Mas+InvPL
-Fem - SG
 abaisse	abaisse	Nom:Fem+SG
 abaissee	abaissee	Nom:Fem+SG
 abajoue	abajoue	Nom:Fem+SG
@@ -46979,7 +46976,6 @@ zuchette	zuchette	Nom:Fem+SG
 zygene	zygene	Nom:Fem+SG
 zymase	zymase	Nom:Fem+SG
 zymotechnie	zymotechnie	Nom:Fem+SG
-Fem - PL
 abaissees	abaissee	Nom:Fem+PL
 abaisses	abaisse	Nom:Fem+PL
 abandonnees	abandonne	Nom:Fem+PL
@@ -57302,7 +57298,6 @@ zonas	zona	Nom:Fem+PL
 zones	zone	Nom:Fem+PL
 zootechniciennes	zootechnicien	Nom:Fem+PL
 zoroastriennes	zoroastrien	Nom:Fem+PL
-InvGen - SG
 abandonnataire	abandonnataire	Nom:InvGen+SG
 abdicataire	abdicataire	Nom:InvGen+SG
 abolitionniste	abolitionniste	Nom:InvGen+SG
@@ -58899,7 +58894,6 @@ zoologiste	zoologiste	Nom:InvGen+SG
 zoologue	zoologue	Nom:InvGen+SG
 zutiste	zutiste	Nom:InvGen+SG
 zwanze	zwanze	Nom:InvGen+SG
-InvGen - PL
 abolitionnistes	abolitionniste	Nom:InvGen+PL
 aborigenes	aborigene	Nom:InvGen+PL
 absenteistes	absenteiste	Nom:InvGen+PL

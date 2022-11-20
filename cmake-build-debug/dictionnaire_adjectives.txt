@@ -1,4 +1,3 @@
-Mas - SG
 abaissant	abaissant	Adj:Mas+SG
 abaisse	abaisse	Adj:Mas+SG
 abaisseur	abaisseur	Adj:Mas+SG
@@ -7189,7 +7188,6 @@ zoroastrien	zoroastrien	Adj:Mas+SG
 zosterien	zosterien	Adj:Mas+SG
 zurichois	zurichois	Adj:Mas+SG
 zwinglien	zwinglien	Adj:Mas+SG
-Mas - PL
 abaisses	abaisse	Adj:Mas+PL
 abandonnes	abandonne	Adj:Mas+PL
 abasourdis	abasourdi	Adj:Mas+PL
@@ -12949,7 +12947,6 @@ zonaux	zonal	Adj:Mas+PL
 zones	zone	Adj:Mas+PL
 zoroastriens	zoroastrien	Adj:Mas+PL
 zurichois	zurichois	Adj:Mas+PL
-Fem - SG
 abaissante	abaissant	Adj:Fem+SG
 abaissee	abaisse	Adj:Fem+SG
 abandonnee	abandonne	Adj:Fem+SG
@@ -19348,7 +19345,6 @@ zoniere	zonier	Adj:Fem+SG
 zoroastrienne	zoroastrien	Adj:Fem+SG
 zosterienne	zosterien	Adj:Fem+SG
 zwinglienne	zwinglien	Adj:Fem+SG
-Fem - PL
 abaissantes	abaissant	Adj:Fem+PL
 abaissees	abaisse	Adj:Fem+PL
 abandonnees	abandonne	Adj:Fem+PL
@@ -25322,7 +25318,6 @@ zonees	zone	Adj:Fem+PL
 zoroastriennes	zoroastrien	Adj:Fem+PL
 zosteriennes	zosterien	Adj:Fem+PL
 zwingliennes	zwinglien	Adj:Fem+PL
-InvGen - SG
 abaissable	abaissable	Adj:InvGen+SG
 abandonnique	abandonnique	Adj:InvGen+SG
 abdicataire	abdicataire	Adj:InvGen+SG
@@ -31002,7 +30997,6 @@ zutique	zutique	Adj:InvGen+SG
 zygomatique	zygomatique	Adj:InvGen+SG
 zygomorphe	zygomorphe	Adj:InvGen+SG
 zymotique	zymotique	Adj:InvGen+SG
-InvGen - PL
 abecedaires	abecedaire	Adj:InvGen+PL
 abolitionnistes	abolitionniste	Adj:InvGen+PL
 abominables	abominable	Adj:InvGen+PL
